@@ -1,0 +1,5 @@
+
+*.csv
+data/full_sample2019_stata_final.dta
+data/raw/counts_Nov2017.npz
+data/raw/scraped_posts.txt

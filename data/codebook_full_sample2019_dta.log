@@ -1,0 +1,170 @@
+--------------------------------------------------------------------------------
+      name:  <unnamed>
+       log:  /accounts/grad/haowen.wu/Documents/EJR-revise/codebook_dta.log
+  log type:  text
+ opened on:  25 May 2019, 09:12:58
+
+. use "`dir_data'full_sample2019_stata_final.dta"
+
+. count 
+  1,725,646
+
+. desc, full
+
+Contains data from /scratch/public/alicehwu/EJR-revise/full_sample2019_stata_fin
+> al.dta
+  obs:     1,725,646                          
+ vars:            31                          25 May 2019 09:09
+ size:   693,709,692                          
+--------------------------------------------------------------------------------
+              storage   display    value
+variable name   type    format     label      variable label
+--------------------------------------------------------------------------------
+title_id1       long    %12.0g                id of a thread
+post1           byte    %8.0g                 id of a post (1 refers to the
+                                                title of thread)
+topic           str253  %253s                 thread title
+nposts          int     %8.0g                 total number of posts, displayed
+                                                on main page of EJMR
+nviews          long    %12.0g                total number of views, displayed
+                                                on main page of EJMR
+n_pos           int     %8.0g                 number of positive votes on a
+                                                thread, displayed on main page
+                                                of EJMR
+n_neg           int     %8.0g                 number of negative votes on a
+                                                thread, displayed on main page
+                                                of EJMR
+latest_page     int     %8.0g                 #pages of a thread, displayed on
+                                                main page of EJMR
+time_latest_str str10   %10s                  time stamp for the latest post in
+                                                a thread
+time_first_str  str13   %13s                  time stamp for the first post in a
+                                                thread
+yr_latest       byte    %8.0g                 year of the latest post, relative
+                                                to 2017
+yr_first        byte    %8.0g                 year in which a thread was
+                                                started, relative to 2017
+month_first     byte    %10.0g                start month of a thread (relative
+                                                to Oct 2017), availaable within
+                                                one year
+month_latest    byte    %10.0g                month of the latest post,
+                                                available within one year
+post_miss       byte    %8.0g                 1 if the content of a post is
+                                                missing
+source1         byte    %8.0g                 1 if in threads with at least one
+                                                gendered post by gender
+                                                classifiers (Primary s
+source2         byte    %8.0g                 1 if in threads with at least one
+                                                post including full name of a
+                                                NBER author
+source_JMC      byte    %8.0g                 1 if in threads with at least one
+                                                post including full name of a
+                                                JMC
+jmc_id          int     %10.0g                id number of JMC, if a post
+                                                contains at least part of
+                                                his/her name
+full_name_JMC   str28   %28s                  full name of a JMC if a post
+                                                contains at least part of the
+                                                name (first/last/abbr
+yr_phd          int     %10.0g                year of PhD - JMC
+school          str13   %13s                  grad school - JMC
+full_name_NBER  str27   %27s                  full name of a NBER author if a
+                                                post contains at least part of
+                                                the name
+female          byte    %10.0g                1 if a Female post, 0 if a Male
+                                                post
+acad            float   %9.0g                 no. academic/professional terms
+acad_dummy      float   %9.0g                 1 if acad>0
+person          float   %9.0g                 no.personal/physical terms
+person_dummy    float   %9.0g                 1 if person>0
+p_acad_dummy    float   %9.0g                 purely professional - 1 if acad>0
+                                                & person=0
+job_rank        float   %14.0g     ranks      Job rank at the post level
+since_phd       float   %9.0g                 years relative to yr of PhD (>0 if
+                                                after PhD)
+--------------------------------------------------------------------------------
+Sorted by: title_id1
+
+. tab female 
+
+     1 if a |
+     Female |
+ post, 0 if |
+a Male post |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |    334,721       76.21       76.21
+          1 |    104,476       23.79      100.00
+------------+-----------------------------------
+      Total |    439,197      100.00
+
+. tab job_rank 
+
+   Job rank at |
+the post level |      Freq.     Percent        Cum.
+---------------+-----------------------------------
+  Grad Student |     48,117        2.79        2.79
+  JMC/Post-doc |     41,868        2.43        5.21
+Junior Faculty |     33,115        1.92        7.13
+Senior Faculty |     26,707        1.55        8.68
+  not assigned |  1,575,839       91.32      100.00
+---------------+-----------------------------------
+         Total |  1,725,646      100.00
+
+. tab1 source*
+
+-> tabulation of source1  
+
+    1 if in |
+    threads |
+    with at |
+  least one |
+   gendered |
+    post by |
+     gender |
+classifiers |
+ (Primary s |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |      6,687        0.39        0.39
+          1 |  1,718,959       99.61      100.00
+------------+-----------------------------------
+      Total |  1,725,646      100.00
+
+-> tabulation of source2  
+
+    1 if in |
+    threads |
+    with at |
+  least one |
+       post |
+  including |
+  full name |
+  of a NBER |
+     author |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,563,993       90.63       90.63
+          1 |    161,653        9.37      100.00
+------------+-----------------------------------
+      Total |  1,725,646      100.00
+
+-> tabulation of source_JMC  
+
+    1 if in |
+    threads |
+    with at |
+  least one |
+       post |
+  including |
+  full name |
+   of a JMC |      Freq.     Percent        Cum.
+------------+-----------------------------------
+          0 |  1,675,975       97.12       97.12
+          1 |     49,671        2.88      100.00
+------------+-----------------------------------
+      Total |  1,725,646      100.00
+
+. log close
+      name:  <unnamed>
+       log:  /accounts/grad/haowen.wu/Documents/EJR-revise/codebook_dta.log
+  log type:  text
+ closed on:  25 May 2019, 09:13:05
+--------------------------------------------------------------------------------
